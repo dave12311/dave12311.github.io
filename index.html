@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+    <head>
+        <title>DnD 5E LaTeX Monster Creator</title>
+		<meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+
+    <body onload="init();">
+        <div class="container">
+            <h1>DnD 5E LaTeX Monster Creator</h1>
+            <form id="monster" autocomplete="off">
+                <input id="name" placeholder="Monster Foo">
+                <input id="description" placeholder="Medium aberration (metasyntatic variable), neutral evil">
+
+                <!--Base attributes-->
+                <div class="center">
+                    <div class="base-stats">
+                        <h2>Armor Class</h2>
+                        <input id="ac" placeholder="15 (Leather Armor, Shield)">
+                    </div>
+                    <div class="base-stats">
+                        <h2>Hit Points</h2>
+                        <input id="hp" placeholder="3d8 + 3">
+                    </div>
+                    <div class="base-stats">
+                        <h2>Speed</h2>
+                        <input id="speed" placeholder="30 ft., fly 30 ft.">
+                    </div>
+                </div>
+
+                <!--Base stats-->
+                <div class="center">
+                    <div class="base-stats small">
+                        <h2>STR</h2>
+                        <input id="str" placeholder="12">
+                    </div>
+                    <div class="base-stats small">
+                        <h2>DEX</h2>
+                        <input id="dex" placeholder="8">
+                    </div>
+                    <div class="base-stats small">
+                        <h2>CON</h2>
+                        <input id="con" placeholder="13">
+                    </div>
+                    <div class="base-stats small">
+                        <h2>INT</h2>
+                        <input id="int" placeholder="10">
+                    </div>
+                    <div class="base-stats small">
+                        <h2>WIS</h2>
+                        <input id="wis" placeholder="14">
+                    </div>
+                    <div class="base-stats small">
+                        <h2>CHA</h2>
+                        <input id="cha" placeholder="15">
+                    </div>
+                </div>
+
+                <!--Details-->
+                <div class="forminput">
+                    <h2>Saving Throws:</h2>
+                    <input id="saving-throws" placeholder="STR +2, INT+4, CHA+1">
+
+                    <h2>Skills:</h2>
+                    <input id="skills" placeholder="Acrobatics +2, Arcana +4">
+
+                    <h2>Damage Vulnerabilities:</h2>
+                    <input id="damage-vulnerabilities" placeholder="cold, fire, psychic">
+
+                    <h2>Damage Resistances:</h2>
+                    <input id="damage-resistances" placeholder="bludgeoning, piercing and slashing from nonmagical attacks">
+
+                    <h2>Damage Immunities:</h2>
+                    <input id="damage-immunities" placeholder="poison">
+
+                    <h2>Condition Immunities:</h2>
+                    <input id="condition-immunities" placeholder="poisoned">
+
+                    <h2>Senses:</h2>
+                    <input id="senses" placeholder="darkvision 60 ft., passive Perception 10">
+
+                    <h2>Languages:</h2>
+                    <input id="languages" placeholder="Common, Goblin, Undercommon">
+
+                    <h2>Challenge:</h2>
+                    <input id="challenge" placeholder="1">
+                </div>
+
+                <!--Traits-->
+                <div class="addremove">
+                    <input type="button" value="-" class="btn addremove" onclick="clearNode(traits);">
+                    <h2>Traits</h2>
+                    <input type="button" value="+" class="btn addremove" onclick="addTrait();">
+                </div>
+                <div id="traits"></div>
+
+                <!--Innate Spellcasting-->
+                <div class="addremove">
+                    <input type="button" value="-" class="btn addremove" onclick="clearNode(innateSpells);">
+                    <h2>Innate Spellcasting</h2>
+                    <input type="button" value="+" class="btn addremove" onclick="addInnate();">
+                </div>
+                <div id="innate">
+                    <input id="innate-desc" placeholder="Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks.">
+                    <div class="innate"></div>
+                </div>
+
+                <!--Spellcasting-->
+                <div class="addremove">
+                    <input type="button" value="-" class="btn addremove" onclick="clearNode(spells);">
+                    <h2>Spellcasting</h2>
+                    <input type="button" value="+" class="btn addremove" onclick="addSpell();">
+                </div>
+                <div id="spells">
+                    <input id="spell-desc" placeholder="Foo is a 2nd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks).">
+                    <div class="spells"></div>
+                </div>
+
+                <!--Actions-->
+                <div class="addremove">
+                    <input type="button" value="-" class="btn addremove" onclick="clearNode(actions);">
+                    <h2>Actions</h2>
+                    <input type="button" value="+" class="btn addremove" onclick="addAction();">
+                </div>
+                <div id="actions">
+                    <div class="actions"></div>
+                </div>
+
+                <!--Legendary Actions-->
+                <div class="addremove">
+                    <input type="button" value="-" class="btn addremove" onclick="clearNode(legendaryActions);">
+                    <h2>Legendary Actions</h2>
+                    <input type="button" value="+" class="btn addremove" onclick="addLegendary();">
+                </div>
+                <div id="legendary">
+                    <input id='legendary-desc' placeholder="The foo can take 3 legendary actions, choosing from the options below.">
+                    <div class="actions"></div>
+                </div>
+                <input type="button" onclick="generate();" value="Copy Generated LaTeX Code" class="btn">
+            </form>
+        </div>
+
+        <script src="https://unpkg.com/popper.js@1"></script>
+        <script src="https://unpkg.com/tippy.js@5"></script>
+    </body>
+</html>

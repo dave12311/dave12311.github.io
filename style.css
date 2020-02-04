@@ -1,0 +1,166 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #333333
+}
+
+.container {
+    background-color: #EEEEEE;
+    width: 900px;
+    margin: 50px auto;
+    border-radius: 5px;
+    padding: 20px 40px;
+    text-align: center;
+}
+
+.center {
+    margin: auto;
+    display: flex;
+}
+
+.center .base-stats {
+    flex: auto;
+    margin: auto 20px;
+}
+
+.center .base-stats.small {
+    flex: auto;
+    margin: auto 10px;
+}
+
+.forminput h2 {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.addremove {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.addremove h2 {
+    flex: 20;
+}
+
+.traits {
+    display: flex;
+}
+
+.traits .name {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.innate {
+    display: flex;
+}
+
+.innate .uses {
+    width: 80px;
+}
+
+.innate .spell {
+    flex: auto;
+    margin-left: 10px;
+}
+
+.spells {
+    display: flex;
+}
+
+.spells .uses {
+    width: 80px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.spells .spell {
+    flex: auto;
+}
+
+.actions {
+    display: flex;
+}
+
+.actions .name {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.actions .desc {
+    flex: 3;
+}
+
+h1 {
+    color: #333333;
+    font-size: 32px;
+    margin: auto 70px 40px;
+}
+
+h2 {
+    color: #666666;
+    margin: 8px auto 10px;
+    font-size: 20px;
+}
+
+form {
+    text-align: center;
+    width: auto;
+}
+
+input {
+    padding: 12px 0;
+    margin: 10px auto;
+    border-radius: 3px;
+    border: 2px solid transparent;
+    width: 100%;
+    font-size: 16px;
+    transition: border .2s, background-color .2s;
+    text-align: center;
+
+    background-color: #CCCCCC;
+    display: block;
+    block-size: 20%;
+}
+
+input:focus {
+    border: 2px solid #555555;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+select {
+    padding: 12px 5px;
+    margin: auto;
+}
+
+form .btn {
+    background-color: #444444;
+    color: #fff;
+    line-height: 25px;
+    cursor: pointer;
+    margin-top: 50px;
+}
+
+form .btn:hover, form .btn:active {
+    background-color: #666666;
+    border: 2px solid #777777;
+}
+
+form .btn.addremove {
+    margin: auto;
+    background-color: #666666;
+    flex: 1;
+}
+
+form .btn.addremove:hover, form .btn.addremove:active {
+    background-color: #888888;
+    border: 2px solid #999999;
+}
