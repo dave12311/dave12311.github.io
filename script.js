@@ -66,6 +66,7 @@ function addTrait() {
     // Description
     var desc = document.createElement('input');
     desc.id = 'trait-desc-' + traits.length;
+    desc.className = 'desc';
     desc.placeholder = 'Foo has advantage on attacks against creatures grappled by it.';
     div.appendChild(desc);
 

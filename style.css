@@ -51,6 +51,10 @@ body {
     margin-right: 10px;
 }
 
+.traits .desc {
+    flex: 8;
+}
+
 .innate {
     display: flex;
 }
