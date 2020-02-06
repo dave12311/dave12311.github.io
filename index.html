@@ -137,6 +137,16 @@
                     <input id='legendary-desc' placeholder="The foo can take 3 legendary actions, choosing from the options below.">
                     <div class="actions"></div>
                 </div>
+
+                <!--Attacks-->
+                <div class="addremove">
+                    <input type="button" value="-" class="btn addremove" onclick="clearNode(attacks);">
+                    <h2>Attacks</h2>
+                    <input type="button" value="+" class="btn addremove" onclick="addAttack();">
+                </div>
+                <div id="attacks"></div>
+
+
                 <input type="button" onclick="generate();" value="Copy Generated LaTeX Code" class="btn">
             </form>
         </div>

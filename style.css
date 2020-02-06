@@ -32,6 +32,13 @@ body {
     margin-top: 20px;
 }
 
+.border {
+    margin-top: 15px;
+    border-style: dotted;
+    border-width: 2px;
+    border-color: #888888;
+}
+
 .addremove {
     display: flex;
     justify-content: center;
@@ -93,6 +100,35 @@ body {
 
 .actions .desc {
     flex: 3;
+}
+
+.attacks {
+    display: flex;
+}
+
+.attacks .attack {
+    flex: auto;
+    margin: 10px;
+}
+
+.attacks .attack.high h2 {
+    margin-bottom: 30px;
+}
+
+.attacks .attack input {
+    margin-bottom: 0px;
+}
+
+.attacks .attack.big {
+    flex: 3;
+}
+
+.attacks .attack.medium {
+    flex: 2;
+}
+
+.attacks .attack.small {
+    flex: 1;
 }
 
 h1 {
