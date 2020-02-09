@@ -61,14 +61,14 @@ function addTrait() {
 
     // Name
     var name = document.createElement('input');
-    name.id = 'trait-name-' + traits.length;
+    name.name = 'trait-name';
     name.className = 'name';
     name.placeholder = 'Grappler';
     div.appendChild(name);
 
     // Description
     var desc = document.createElement('input');
-    desc.id = 'trait-desc-' + traits.length;
+    desc.name = 'trait-desc';
     desc.className = 'desc';
     desc.placeholder = 'Foo has advantage on attacks against creatures grappled by it.';
     div.appendChild(desc);
@@ -87,7 +87,7 @@ function addInnate() {
     uses.type = 'number'
     uses.min = 0;
     uses.step = 1;
-    uses.id = 'innate-uses-' + innateSpells.length;
+    uses.name = 'innate-uses';
     uses.className = 'uses';
     uses.placeholder = 3;
     div.appendChild(uses);
@@ -95,7 +95,7 @@ function addInnate() {
 
     // Spell
     var spell = document.createElement('input');
-    spell.id = 'innate-spell-' + innateSpells.length;
+    spell.name = 'innate-spell';
     spell.className = 'spell';
     spell.placeholder = 'fog cloud, rope trick';
     div.appendChild(spell);
@@ -122,6 +122,7 @@ function addSpell() {
         item.innerHTML = i + '. Level';
         lvl.appendChild(item);
     }
+    lvl.name = 'spell-lvl';
     lvl.id = 'spell-lvl-' + spells.length;
     lvl.setAttribute('onchange', 'lvlChange(' + spells.length + ');');
     div.appendChild(lvl);
@@ -133,6 +134,7 @@ function addSpell() {
     uses.min = 0;
     uses.step = 1;
     uses.id = 'spell-uses-' + spells.length;
+    uses.name = 'spell-uses';
     uses.className = 'uses';
     uses.placeholder = 3;
     uses.disabled = true;
@@ -142,7 +144,7 @@ function addSpell() {
 
     // Spell
     var spell = document.createElement('input');
-    spell.id = 'spell-' + spells.length;
+    spell.name = 'spell';
     spell.className = 'spell';
     spell.placeholder = 'burning hands, mage armor, shield';
     div.appendChild(spell);
@@ -172,7 +174,7 @@ function addAction() {
 
     // Name
     var name = document.createElement('input');
-    name.id = 'action-name-' + actions.length;
+    name.name = 'action-name';
     name.className = 'name';
     name.placeholder = 'Multiattack';
     div.appendChild(name);
@@ -180,7 +182,7 @@ function addAction() {
 
     // Description
     var desc = document.createElement('input');
-    desc.id = 'action-desc-' + actions.length;
+    desc.name = 'action-desc';
     desc.className = 'desc';
     desc.placeholder = 'Foo makes two melee attacks';
     div.appendChild(desc);
@@ -197,7 +199,7 @@ function addLegendary() {
 
     // Name
     var name = document.createElement('input');
-    name.id = 'legendary-name-' + legendaryActions.length;
+    name.name = 'legendary-name';
     name.className = 'name';
     name.placeholder = 'Create Contract';
     div.appendChild(name);
@@ -205,7 +207,7 @@ function addLegendary() {
 
     // Description
     var desc = document.createElement('input');
-    desc.id = 'legendary-desc-' + actions.length;
+    desc.name = 'legendary-desc';
     desc.className = 'desc';
     desc.placeholder = 'Foo presents a contract and waves it in the face of a creature within 10 feet.';
     div.appendChild(desc);
@@ -231,7 +233,7 @@ function createAttackField(text, data, id, size, parent) {
 
     if(Array.isArray(data)) {
         var select = document.createElement('select');
-        select.id = id + '-' + attacks.length;
+        select.name = id;
         for(var i = 0; i < data.length; i++) {
             var tmp = document.createElement('option');
             tmp.innerHTML = data[i];
@@ -240,7 +242,7 @@ function createAttackField(text, data, id, size, parent) {
         div.appendChild(select);
     } else {
         var textbox = document.createElement('input');
-        textbox.id = id + '-' + attacks.length;
+        textbox.name = id;
         textbox.placeholder = data;
         div.appendChild(textbox);
     }

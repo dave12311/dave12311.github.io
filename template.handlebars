@@ -1,0 +1,68 @@
+\begin{DndMonster}{ {{~name~}} }
+    \DndMonsterType{ {{~description~}} }
+
+    \DndMonsterBasics[
+        armor-class = { {{~ac~}} },
+        hit-points = {\DndDice{ {{~hp~}} }},
+        speed = { {{~speed~}} }
+    ]
+
+    \DndMonsterAbilityScores[
+        str = {{str}},
+        dex = {{dex}},
+        con = {{con}},
+        int = {{int}},
+        wis = {{wis}},
+        cha = {{cha}},
+    ]
+
+    \DndMonsterDetails[
+        {{#if saving-throws}}saving-throws = { {{~saving-throws~}} },
+        {{/if}}{{#if skills}}skills = { {{~skills~}} },
+        {{/if}}{{#if damage-vulnerabilities}}damage-vulnerabilities = { {{~damage-vulnerabilities~}} },
+        {{/if}}{{#if damage-resistances}}damage-resistances = { {{~damage-resistances~}} },
+        {{/if}}{{#if damage-immunities}}damage-immunities = { {{~damage-immunities~}} },
+        {{/if}}{{#if condition-immunities}}condition-immunities = { {{~condition-immunities~}} },
+        {{/if}}{{#if senses}}senses = { {{~senses~}} },
+        {{/if}}{{#if languages}}languages = { {{~languages~}} },
+        {{/if}}{{#if challenge}}challenge = {{challenge}},
+    {{/if}}]
+
+    {{#each trait}}
+    \DndMonsterAction{ {{~this.name~}} }
+    {{this.desc}}
+
+    {{/each}}
+    {{#if innate-desc}}
+    \DndMonsterAction{Innate Spellcasting}
+    {{innate-desc}}
+    \begin{DndMonsterSpells}
+        {{#each innate}}
+        \DndInnateSpellLevel[ {{~this.uses~}} ]{ {{~this.name~}} }
+        {{/each}}
+    \end{DndMonsterSpells}
+
+    {{/if}}
+    {{#if spell-desc}}
+    \DndMonsterAction{Spellcasting}
+    {{spell-desc}}
+    \begin{DndMonsterSpells}
+        {{#each spell}}
+        {{#if this.uses}}
+        \DndMonsterSpellLevel[ {{~this.lvl~}} ][ {{~this.uses~}} ]{ {{~this.name~}} }
+        {{else}}
+        \DndMonsterSpellLevel{ {{~this.name~}} }
+        {{/if}}
+        {{/each}}
+    \end{DndMonsterSpells}
+    
+    {{/if}}
+
+    \DndMonsterSection{Actions}
+
+    {{#each action}}
+    \DndMonsterAction{ {{~this.name~}} }
+    {{this.desc}}
+
+    {{/each}}
+\end{DndMonster}

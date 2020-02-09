@@ -3,29 +3,29 @@
         <title>DnD 5E LaTeX Monster Creator</title>
 		<meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
+        <script src="ui.js"></script>
     </head>
 
     <body onload="init();">
         <div class="container">
             <h1>DnD 5E LaTeX Monster Creator</h1>
-            <form id="monster" autocomplete="off">
-                <input id="name" placeholder="Monster Foo">
-                <input id="description" placeholder="Medium aberration (metasyntatic variable), neutral evil">
+            <form id="monster" name="monster" autocomplete="off">
+                <input name="name" placeholder="Monster Foo">
+                <input name="description" placeholder="Medium aberration (metasyntatic variable), neutral evil">
 
                 <!--Base attributes-->
                 <div class="center">
                     <div class="base-stats">
                         <h2>Armor Class</h2>
-                        <input id="ac" placeholder="15 (Leather Armor, Shield)">
+                        <input name="ac" placeholder="15 (Leather Armor, Shield)">
                     </div>
                     <div class="base-stats">
                         <h2>Hit Points</h2>
-                        <input id="hp" placeholder="3d8 + 3">
+                        <input name="hp" placeholder="3d8 + 3">
                     </div>
                     <div class="base-stats">
                         <h2>Speed</h2>
-                        <input id="speed" placeholder="30 ft., fly 30 ft.">
+                        <input name="speed" placeholder="30 ft., fly 30 ft.">
                     </div>
                 </div>
 
@@ -33,58 +33,58 @@
                 <div class="center">
                     <div class="base-stats small">
                         <h2>STR</h2>
-                        <input id="str" placeholder="12">
+                        <input name="str" placeholder="12">
                     </div>
                     <div class="base-stats small">
                         <h2>DEX</h2>
-                        <input id="dex" placeholder="8">
+                        <input name="dex" placeholder="8">
                     </div>
                     <div class="base-stats small">
                         <h2>CON</h2>
-                        <input id="con" placeholder="13">
+                        <input name="con" placeholder="13">
                     </div>
                     <div class="base-stats small">
                         <h2>INT</h2>
-                        <input id="int" placeholder="10">
+                        <input name="int" placeholder="10">
                     </div>
                     <div class="base-stats small">
                         <h2>WIS</h2>
-                        <input id="wis" placeholder="14">
+                        <input name="wis" placeholder="14">
                     </div>
                     <div class="base-stats small">
                         <h2>CHA</h2>
-                        <input id="cha" placeholder="15">
+                        <input name="cha" placeholder="15">
                     </div>
                 </div>
 
                 <!--Details-->
                 <div class="forminput">
                     <h2>Saving Throws:</h2>
-                    <input id="saving-throws" placeholder="STR +2, INT+4, CHA+1">
+                    <input name="saving-throws" placeholder="STR +2, INT+4, CHA+1">
 
                     <h2>Skills:</h2>
-                    <input id="skills" placeholder="Acrobatics +2, Arcana +4">
+                    <input name="skills" placeholder="Acrobatics +2, Arcana +4">
 
                     <h2>Damage Vulnerabilities:</h2>
-                    <input id="damage-vulnerabilities" placeholder="cold, fire, psychic">
+                    <input name="damage-vulnerabilities" placeholder="cold, fire, psychic">
 
                     <h2>Damage Resistances:</h2>
-                    <input id="damage-resistances" placeholder="bludgeoning, piercing and slashing from nonmagical attacks">
+                    <input name="damage-resistances" placeholder="bludgeoning, piercing and slashing from nonmagical attacks">
 
                     <h2>Damage Immunities:</h2>
-                    <input id="damage-immunities" placeholder="poison">
+                    <input name="damage-immunities" placeholder="poison">
 
                     <h2>Condition Immunities:</h2>
-                    <input id="condition-immunities" placeholder="poisoned">
+                    <input name="condition-immunities" placeholder="poisoned">
 
                     <h2>Senses:</h2>
-                    <input id="senses" placeholder="darkvision 60 ft., passive Perception 10">
+                    <input name="senses" placeholder="darkvision 60 ft., passive Perception 10">
 
                     <h2>Languages:</h2>
-                    <input id="languages" placeholder="Common, Goblin, Undercommon">
+                    <input name="languages" placeholder="Common, Goblin, Undercommon">
 
                     <h2>Challenge:</h2>
-                    <input id="challenge" placeholder="1">
+                    <input name="challenge" placeholder="1">
                 </div>
 
                 <!--Traits-->
@@ -102,7 +102,7 @@
                     <input type="button" value="+" class="btn addremove" onclick="addInnate();">
                 </div>
                 <div id="innate">
-                    <input id="innate-desc" placeholder="Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks.">
+                    <input name="innate-desc" placeholder="Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks.">
                     <div class="innate"></div>
                 </div>
 
@@ -113,7 +113,7 @@
                     <input type="button" value="+" class="btn addremove" onclick="addSpell();">
                 </div>
                 <div id="spells">
-                    <input id="spell-desc" placeholder="Foo is a 2nd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks).">
+                    <input name="spell-desc" placeholder="Foo is a 2nd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks).">
                     <div class="spells"></div>
                 </div>
 
@@ -153,5 +153,8 @@
 
         <script src="https://unpkg.com/popper.js@1"></script>
         <script src="https://unpkg.com/tippy.js@5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+        <script src="generate.js"></script>
+        <script src="latex.js"></script>
     </body>
 </html>
