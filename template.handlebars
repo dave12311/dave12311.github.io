@@ -16,16 +16,16 @@
         cha = {{cha}},
     ]
 
-    \DndMonsterDetails[
-        {{#if saving-throws}}saving-throws = { {{~saving-throws~}} },
-        {{/if}}{{#if skills}}skills = { {{~skills~}} },
-        {{/if}}{{#if damage-vulnerabilities}}damage-vulnerabilities = { {{~damage-vulnerabilities~}} },
-        {{/if}}{{#if damage-resistances}}damage-resistances = { {{~damage-resistances~}} },
-        {{/if}}{{#if damage-immunities}}damage-immunities = { {{~damage-immunities~}} },
-        {{/if}}{{#if condition-immunities}}condition-immunities = { {{~condition-immunities~}} },
-        {{/if}}{{#if senses}}senses = { {{~senses~}} },
-        {{/if}}{{#if languages}}languages = { {{~languages~}} },
-        {{/if}}{{#if challenge}}challenge = { {{~challenge~}} }{{/if}}
+    \DndMonsterDetails[{{#if saving-throws}}
+        saving-throws = { {{~saving-throws~}} },{{/if}}{{#if skills}}
+        skills = { {{~skills~}} },{{/if}}{{#if damage-vulnerabilities}}
+        damage-vulnerabilities = { {{~damage-vulnerabilities~}} },{{/if}}{{#if damage-resistances}}
+        damage-resistances = { {{~damage-resistances~}} },{{/if}}{{#if damage-immunities}}
+        damage-immunities = { {{~damage-immunities~}} },{{/if}}{{#if condition-immunities}}
+        condition-immunities = { {{~condition-immunities~}} },{{/if}}{{#if senses}}
+        senses = { {{~senses~}} },{{/if}}{{#if languages}}
+        languages = { {{~languages~}} },{{/if}}{{#if challenge}}
+        challenge = { {{~challenge~}} }{{/if}}
     ]
 
     {{#each trait}}
@@ -69,17 +69,17 @@
         name = { {{~this.name~}} },
         distance = {{this.distance}},
         type = {{this.type}},
-        mod = { {{~this.mod~}} },
-        {{#if this.reach}}reach = { {{~this.reach~}} },
-        {{/if}}{{#if this.range}}range = { {{~this.range~}} },
-        {{/if}}{{#if this.targets}}targets = { {{~this.targets~}} },
-        {{/if}}dmg = \DndDice{ {{~this.damage~}} },
-        dmg-type = {{this.damage-type}},
-        {{#if this.plus-damage}}plus-dmg = { {{~this.plus-damage~}} },
-        {{/if}}{{#if this.plus-damage-type}}plus-dmg-type = {{this.plus-damage-type}},
-        {{/if}}{{#if this.or-damage}}or-dmg = { {{~this.or-damage~}} },
-        {{/if}}{{#if this.or-damage-when}}or-dmg-when = { {{~this.or-damage-when~}} },
-        {{/if}}{{#if extra}}extra = { {{~this.extra~}} }{{/if}}
+        mod = { {{~this.mod~}} },{{#if this.reach}}
+        reach = { {{~this.reach~}} },{{/if}}{{#if this.range}}
+        range = { {{~this.range~}} },{{/if}}{{#if this.targets}}
+        targets = { {{~this.targets~}} },{{/if}}
+        dmg = \DndDice{ {{~this.damage~}} },
+        dmg-type = {{this.damage-type}},{{#if this.plus-damage}}
+        plus-dmg = { {{~this.plus-damage~}} },{{/if}}{{#if this.plus-damage-type}}
+        plus-dmg-type = {{this.plus-damage-type}},{{/if}}{{#if this.or-damage}}
+        or-dmg = { {{~this.or-damage~}} },{{/if}}{{#if this.or-damage-when}}
+        or-dmg-when = { {{~this.or-damage-when~}} },{{/if}}{{#if extra}}
+        extra = { {{~this.extra~}} }{{/if}}
 ]
     {{/each}}
     {{#if legendary-action-desc}}

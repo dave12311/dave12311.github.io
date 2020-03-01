@@ -278,7 +278,7 @@ function addAttack() {
     createAttackField('Targets', 'one target', 'attack-targets', 'high', divs[1]);
     createAttackField('Damage', '1d8+4', 'attack-damage', 'high', divs[1]);
     var damageTypes = ['Acid', 'Bludgeoning', 'Cold', 'Fire', 'Force', 'Lightning', 'Necrotic', 'Piercing', 'Poison', 'Psychic', 'Radiant', 'Slashing', 'Thunder'];
-    createAttackField('Damage Type', damageTypes, 'attack-damage-type', null, divs[1]);
+    createAttackField('Damage Type', damageTypes, 'attack-damage-type', 'high', divs[1]);
     createAttackField('Plus Damage', '1d8+4', 'attack-plus-damage', 'high', divs[1]);
     createAttackField('Plus Damage Type', damageTypes, 'attack-plus-damage-type', null, divs[1]);
 
