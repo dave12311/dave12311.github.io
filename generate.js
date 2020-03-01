@@ -18,44 +18,37 @@ function formToJSON( elem ) {
     return output;
 }
 
+function correctArray(fromName, fromDesc, toName, toDesc, array, data) {
+    if(data[fromName]) {
+        data[array] = new Array();
+        var elements = 1;
+        if(Array.isArray(data[fromName])) {
+            elements = data[fromName].length;
+        }
+        for(var i = 0; i < elements; i++) {
+            var tmp = new Object();
+            if(elements == 1) {
+                tmp[toName] = data[fromName];
+                tmp[toDesc] = data[fromDesc];
+            } else {
+                tmp[toName] = data[fromName][i];
+                tmp[toDesc] = data[fromDesc][i];
+            }
+            data[array].push(tmp);
+        }
+        delete data[fromName];
+        delete data[fromDesc];
+    }
+}
+
 function generate() {
     var data = formToJSON(document.getElementById('monster'));
 
-    // TODO: Incorrect indexing if not array
-
     // Traits
-    if(data['trait-name']) {
-        data.trait = new Array();
-        var elements = 1;
-        if(Array.isArray(data['trait-name'])) {
-            elements = data['trait-name'].length;
-        }
-        for(var i = 0; i < elements; i++) {
-            var tmp = new Object();
-            tmp.name = data['trait-name'][i];
-            tmp.desc = data['trait-desc'][i];
-            data.trait.push(tmp);
-        }
-        delete data['trait-name'];
-        delete data['trait-desc'];
-    }
+    correctArray('trait-name', 'trait-desc', 'name', 'desc', 'trait', data);
 
     // Innate spells
-    if(data['innate-spell']) {
-        data.innate = new Array();
-        var elements = 1;
-        if(Array.isArray(data['innate-spell'])) {
-            elements = data['innate-spell'].length;
-        }
-        for(var i = 0; i < elements; i++) {
-            var tmp = new Object();
-            tmp.name = data['innate-spell'][i];
-            tmp.uses = data['innate-uses'][i];
-            data.innate.push(tmp);
-        }
-        delete data['innate-spell'];
-        delete data['innate-uses'];
-    }
+    correctArray('innate-spell', 'innate-uses', 'name', 'uses', 'innate', data);
 
     // Spells
     if(data.spell) {
@@ -85,38 +78,12 @@ function generate() {
     }
 
     // Actions
-    if(data['action-name']) {
-        data.action = new Array();
-        var elements = 1;
-        if(Array.isArray(data['action-name'])) {
-            elements = data['action-name'].length;
-        }
-        for(var i = 0; i < elements; i++) {
-            var tmp = new Object();
-            tmp.name = data['action-name'][i];
-            tmp.desc = data['action-desc'][i];
-            data.action.push(tmp);
-        }
-        delete data['action-name'];
-        delete data['action-desc'];
-    }
+    correctArray('action-name', 'action-desc', 'name', 'desc', 'action', data);
 
     // Legendary actions
-    if(data['legendary-name']) {
-        data.legendary = new Array();
-        var elements = 1;
-        if(Array.isArray(data['legendary-name'])) {
-            elements = data['legendary-name'].length;
-        }
-        for(var i = 0; i < elements; i++) {
-            var tmp = new Object();
-            tmp.name = data['legendary-name'][i];
-            tmp.desc = data['legendary-desc'][i];
-            data.legendary.push(tmp);
-        }
-        delete data['legendary-name'];
-        delete data['legendary-desc'];
-    }
+    correctArray('legendary-name', 'legendary-desc', 'name', 'desc', 'legendary', data);
+
+    
     console.log(data);
 
     var template = Handlebars.templates['template'];
