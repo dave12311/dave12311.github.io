@@ -95,11 +95,11 @@ function addInnate() {
 
     // Spell
     var spell = document.createElement('input');
-    spell.name = 'innate-spell';
+    spell.name = 'innate-name';
     spell.className = 'spell';
     spell.placeholder = 'fog cloud, rope trick';
     div.appendChild(spell);
-    addTooltip(spell, 'Spell names');
+    addTooltip(spell, 'Spell name');
 
     innateDiv.appendChild(div);
     innateSpells.push(div);
@@ -148,7 +148,7 @@ function addSpell() {
     spell.className = 'spell';
     spell.placeholder = 'burning hands, mage armor, shield';
     div.appendChild(spell);
-    addTooltip(spell, 'Spell names');
+    addTooltip(spell, 'Spell name');
 
     spellDiv.appendChild(div);
     spells.push(div);
@@ -237,6 +237,7 @@ function createAttackField(text, data, id, size, parent) {
         for(var i = 0; i < data.length; i++) {
             var tmp = document.createElement('option');
             tmp.innerHTML = data[i];
+            tmp.value = data[i].toLowerCase();
             select.appendChild(tmp);
         }
         div.appendChild(select);

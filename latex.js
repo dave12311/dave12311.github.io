@@ -96,9 +96,9 @@ templates['template'] = template({"1":function(container,depth0,helpers,partials
         return undefined
     };
 
-  return "challenge = "
-    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"challenge") || (depth0 != null ? lookupProperty(depth0,"challenge") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"challenge","hash":{},"data":data,"loc":{"start":{"line":28,"column":44},"end":{"line":28,"column":57}}}) : helper)))
-    + ",\n    ";
+  return "challenge = {"
+    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"challenge") || (depth0 != null ? lookupProperty(depth0,"challenge") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"challenge","hash":{},"data":data,"loc":{"start":{"line":28,"column":46},"end":{"line":28,"column":61}}}) : helper)))
+    + "}";
 },"19":function(container,depth0,helpers,partials,data) {
     var alias1=container.lambda, alias2=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -186,6 +186,151 @@ templates['template'] = template({"1":function(container,depth0,helpers,partials
   return "        \\DndMonsterSpellLevel{"
     + container.escapeExpression(container.lambda((depth0 != null ? lookupProperty(depth0,"name") : depth0), depth0))
     + "}\n";
+},"30":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=container.lambda, alias2=container.escapeExpression, alias3=depth0 != null ? depth0 : (container.nullContext || {}), lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "    \\DndMonsterAttack[\n        name = {"
+    + alias2(alias1((depth0 != null ? lookupProperty(depth0,"name") : depth0), depth0))
+    + "},\n        distance = "
+    + alias2(alias1((depth0 != null ? lookupProperty(depth0,"distance") : depth0), depth0))
+    + ",\n        type = "
+    + alias2(alias1((depth0 != null ? lookupProperty(depth0,"type") : depth0), depth0))
+    + ",\n        mod = {"
+    + alias2(alias1((depth0 != null ? lookupProperty(depth0,"mod") : depth0), depth0))
+    + "},\n        "
+    + ((stack1 = lookupProperty(helpers,"if").call(alias3,(depth0 != null ? lookupProperty(depth0,"reach") : depth0),{"name":"if","hash":{},"fn":container.program(31, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":73,"column":8},"end":{"line":74,"column":15}}})) != null ? stack1 : "")
+    + ((stack1 = lookupProperty(helpers,"if").call(alias3,(depth0 != null ? lookupProperty(depth0,"range") : depth0),{"name":"if","hash":{},"fn":container.program(33, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":74,"column":15},"end":{"line":75,"column":15}}})) != null ? stack1 : "")
+    + ((stack1 = lookupProperty(helpers,"if").call(alias3,(depth0 != null ? lookupProperty(depth0,"targets") : depth0),{"name":"if","hash":{},"fn":container.program(35, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":75,"column":15},"end":{"line":76,"column":15}}})) != null ? stack1 : "")
+    + "dmg = \\DndDice{"
+    + alias2(alias1((depth0 != null ? lookupProperty(depth0,"damage") : depth0), depth0))
+    + "},\n        dmg-type = "
+    + alias2(alias1((depth0 != null ? lookupProperty(depth0,"damage-type") : depth0), depth0))
+    + ",\n        "
+    + ((stack1 = lookupProperty(helpers,"if").call(alias3,(depth0 != null ? lookupProperty(depth0,"plus-damage") : depth0),{"name":"if","hash":{},"fn":container.program(37, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":78,"column":8},"end":{"line":79,"column":15}}})) != null ? stack1 : "")
+    + ((stack1 = lookupProperty(helpers,"if").call(alias3,(depth0 != null ? lookupProperty(depth0,"plus-damage-type") : depth0),{"name":"if","hash":{},"fn":container.program(39, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":79,"column":15},"end":{"line":80,"column":15}}})) != null ? stack1 : "")
+    + ((stack1 = lookupProperty(helpers,"if").call(alias3,(depth0 != null ? lookupProperty(depth0,"or-damage") : depth0),{"name":"if","hash":{},"fn":container.program(41, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":80,"column":15},"end":{"line":81,"column":15}}})) != null ? stack1 : "")
+    + ((stack1 = lookupProperty(helpers,"if").call(alias3,(depth0 != null ? lookupProperty(depth0,"or-damage-when") : depth0),{"name":"if","hash":{},"fn":container.program(43, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":81,"column":15},"end":{"line":82,"column":15}}})) != null ? stack1 : "")
+    + ((stack1 = lookupProperty(helpers,"if").call(alias3,(depth0 != null ? lookupProperty(depth0,"extra") : depth0),{"name":"if","hash":{},"fn":container.program(45, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":82,"column":15},"end":{"line":82,"column":63}}})) != null ? stack1 : "")
+    + "\n]\n";
+},"31":function(container,depth0,helpers,partials,data) {
+    var lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "reach = {"
+    + container.escapeExpression(container.lambda((depth0 != null ? lookupProperty(depth0,"reach") : depth0), depth0))
+    + "},\n        ";
+},"33":function(container,depth0,helpers,partials,data) {
+    var lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "range = {"
+    + container.escapeExpression(container.lambda((depth0 != null ? lookupProperty(depth0,"range") : depth0), depth0))
+    + "},\n        ";
+},"35":function(container,depth0,helpers,partials,data) {
+    var lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "targets = {"
+    + container.escapeExpression(container.lambda((depth0 != null ? lookupProperty(depth0,"targets") : depth0), depth0))
+    + "},\n        ";
+},"37":function(container,depth0,helpers,partials,data) {
+    var lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "plus-dmg = {"
+    + container.escapeExpression(container.lambda((depth0 != null ? lookupProperty(depth0,"plus-damage") : depth0), depth0))
+    + "},\n        ";
+},"39":function(container,depth0,helpers,partials,data) {
+    var lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "plus-dmg-type = "
+    + container.escapeExpression(container.lambda((depth0 != null ? lookupProperty(depth0,"plus-damage-type") : depth0), depth0))
+    + ",\n        ";
+},"41":function(container,depth0,helpers,partials,data) {
+    var lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "or-dmg = {"
+    + container.escapeExpression(container.lambda((depth0 != null ? lookupProperty(depth0,"or-damage") : depth0), depth0))
+    + "},\n        ";
+},"43":function(container,depth0,helpers,partials,data) {
+    var lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "or-dmg-when = {"
+    + container.escapeExpression(container.lambda((depth0 != null ? lookupProperty(depth0,"or-damage-when") : depth0), depth0))
+    + "},\n        ";
+},"45":function(container,depth0,helpers,partials,data) {
+    var lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "extra = {"
+    + container.escapeExpression(container.lambda((depth0 != null ? lookupProperty(depth0,"extra") : depth0), depth0))
+    + "}";
+},"47":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "    \\DndMonsterSection{Legendary Actions}\n    "
+    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"legendary-action-desc") || (depth0 != null ? lookupProperty(depth0,"legendary-action-desc") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"legendary-action-desc","hash":{},"data":data,"loc":{"start":{"line":87,"column":4},"end":{"line":87,"column":29}}}) : helper)))
+    + "\n    \\begin{DndMonsterLegendaryActions}\n"
+    + ((stack1 = lookupProperty(helpers,"each").call(alias1,(depth0 != null ? lookupProperty(depth0,"legendary") : depth0),{"name":"each","hash":{},"fn":container.program(48, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":89,"column":8},"end":{"line":91,"column":17}}})) != null ? stack1 : "")
+    + "    \\end{DndMonsterLegendaryActions}\n\n";
+},"48":function(container,depth0,helpers,partials,data) {
+    var alias1=container.lambda, alias2=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "        \\DndMonsterLegendaryAction["
+    + alias2(alias1((depth0 != null ? lookupProperty(depth0,"name") : depth0), depth0))
+    + "]{"
+    + alias2(alias1((depth0 != null ? lookupProperty(depth0,"desc") : depth0), depth0))
+    + "}\n";
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -225,11 +370,15 @@ templates['template'] = template({"1":function(container,depth0,helpers,partials
     + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"condition-immunities") : depth0),{"name":"if","hash":{},"fn":container.program(11, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":25,"column":15},"end":{"line":26,"column":15}}})) != null ? stack1 : "")
     + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"senses") : depth0),{"name":"if","hash":{},"fn":container.program(13, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":26,"column":15},"end":{"line":27,"column":15}}})) != null ? stack1 : "")
     + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"languages") : depth0),{"name":"if","hash":{},"fn":container.program(15, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":27,"column":15},"end":{"line":28,"column":15}}})) != null ? stack1 : "")
-    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"challenge") : depth0),{"name":"if","hash":{},"fn":container.program(17, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":28,"column":15},"end":{"line":29,"column":11}}})) != null ? stack1 : "")
-    + "]\n\n"
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"challenge") : depth0),{"name":"if","hash":{},"fn":container.program(17, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":28,"column":15},"end":{"line":28,"column":70}}})) != null ? stack1 : "")
+    + "\n    ]\n\n"
     + ((stack1 = lookupProperty(helpers,"each").call(alias1,(depth0 != null ? lookupProperty(depth0,"trait") : depth0),{"name":"each","hash":{},"fn":container.program(19, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":31,"column":4},"end":{"line":35,"column":13}}})) != null ? stack1 : "")
     + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"innate-desc") : depth0),{"name":"if","hash":{},"fn":container.program(21, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":36,"column":4},"end":{"line":45,"column":11}}})) != null ? stack1 : "")
     + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"spell-desc") : depth0),{"name":"if","hash":{},"fn":container.program(24, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":46,"column":4},"end":{"line":59,"column":11}}})) != null ? stack1 : "")
-    + "    \n\\end{DndMonster}";
+    + "    \\DndMonsterSection{Actions}\n\n"
+    + ((stack1 = lookupProperty(helpers,"each").call(alias1,(depth0 != null ? lookupProperty(depth0,"action") : depth0),{"name":"each","hash":{},"fn":container.program(19, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":62,"column":4},"end":{"line":66,"column":13}}})) != null ? stack1 : "")
+    + ((stack1 = lookupProperty(helpers,"each").call(alias1,(depth0 != null ? lookupProperty(depth0,"attack") : depth0),{"name":"each","hash":{},"fn":container.program(30, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":67,"column":4},"end":{"line":84,"column":13}}})) != null ? stack1 : "")
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"legendary-action-desc") : depth0),{"name":"if","hash":{},"fn":container.program(47, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":85,"column":4},"end":{"line":94,"column":11}}})) != null ? stack1 : "")
+    + "\\end{DndMonster}";
 },"useData":true});
 })();

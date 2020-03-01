@@ -1,5 +1,5 @@
 function formToJSON( elem ) {
-    let output = {};
+    var output = new Object();
     new FormData( elem ).forEach(
       ( value, key ) => {
         // Check if property already exist
@@ -18,26 +18,32 @@ function formToJSON( elem ) {
     return output;
 }
 
-function correctArray(fromName, fromDesc, toName, toDesc, array, data) {
-    if(data[fromName]) {
-        data[array] = new Array();
+function correctArray(objectNames, arrayName, data) {
+    var from = (to) => {
+        return arrayName + '-' + to;
+    }
+    if(data[from(objectNames[0])] != null) {
+        data[arrayName] = new Array();
         var elements = 1;
-        if(Array.isArray(data[fromName])) {
-            elements = data[fromName].length;
+        if(Array.isArray(data[from(objectNames[0])])) {
+            elements = data[from(objectNames[0])].length;
         }
         for(var i = 0; i < elements; i++) {
             var tmp = new Object();
             if(elements == 1) {
-                tmp[toName] = data[fromName];
-                tmp[toDesc] = data[fromDesc];
+                for(var j = 0; j < objectNames.length; j++) {
+                    tmp[objectNames[j]] = data[from(objectNames[j])];
+                }
             } else {
-                tmp[toName] = data[fromName][i];
-                tmp[toDesc] = data[fromDesc][i];
+                for(var j = 0; j < objectNames.length; j++) {
+                    tmp[objectNames[j]] = data[from(objectNames[j])][i];
+                }
             }
-            data[array].push(tmp);
+            data[arrayName].push(tmp);
         }
-        delete data[fromName];
-        delete data[fromDesc];
+        objectNames.forEach(e => {
+            delete data[from(e)];
+        });
     }
 }
 
@@ -45,13 +51,13 @@ function generate() {
     var data = formToJSON(document.getElementById('monster'));
 
     // Traits
-    correctArray('trait-name', 'trait-desc', 'name', 'desc', 'trait', data);
+    correctArray(['name', 'desc'], 'trait', data);
 
     // Innate spells
-    correctArray('innate-spell', 'innate-uses', 'name', 'uses', 'innate', data);
+    correctArray(['name', 'uses'], 'innate', data);
 
     // Spells
-    if(data.spell) {
+    if(data.spell != null) {
         var spell = new Array();
         var elements = 1;
         var cantrips = 0;
@@ -60,12 +66,22 @@ function generate() {
         }
         for(var i = 0; i < elements; i++) {
             var tmp = new Object();
-            tmp.name = data.spell[i];
-            tmp.lvl = data['spell-lvl'][i];
-            if(tmp.lvl == 0) {
-                cantrips++;
+            if(elements == 1) {
+                tmp.name = data.spell;
+                tmp.lvl = data['spell-lvl'];
+                if(tmp.lvl == 0) {
+                    cantrips++;
+                } else {
+                    tmp.uses = data['spell-uses'];
+                }
             } else {
-                tmp.uses = data['spell-uses'][i-cantrips];
+                tmp.name = data.spell[i];
+                tmp.lvl = data['spell-lvl'][i];
+                if(tmp.lvl == 0) {
+                    cantrips++;
+                } else {
+                    tmp.uses = data['spell-uses'][i-cantrips];
+                }
             }
             spell.push(tmp);
         }
@@ -78,12 +94,17 @@ function generate() {
     }
 
     // Actions
-    correctArray('action-name', 'action-desc', 'name', 'desc', 'action', data);
+    correctArray(['name', 'desc'], 'action', data);
+
+    // Attacks
+    var attack = ['name', 'distance', 'type', 'mod', 'reach', 'range',
+             'targets', 'damage', 'damage-type', 'plus-damage', 'plus-damage-type',
+             'or-damage', 'or-damage-when', 'extra']
+    correctArray(attack, 'attack', data);
 
     // Legendary actions
-    correctArray('legendary-name', 'legendary-desc', 'name', 'desc', 'legendary', data);
+    correctArray(['name', 'desc'], 'legendary', data);
 
-    
     console.log(data);
 
     var template = Handlebars.templates['template'];
