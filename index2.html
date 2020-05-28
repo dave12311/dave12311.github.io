@@ -23,6 +23,11 @@
         </div>
     </nav>
 
+    <!-- Progress bar -->
+    <div class="progress" id="progress">
+        <div class="indeterminate"></div>
+    </div>
+
     <!-- Floating Button -->
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large green" id="generate">
@@ -34,7 +39,6 @@
             <li><a class="btn-floating red" id="clear"><i class="material-icons">clear</i></a></li>
             </ul>
     </div>
-        
 
     <!-- Cards -->
     <div class="container">
@@ -44,51 +48,51 @@
                 <span class="card-title">Base Stats and Attributes</span>
                 <div class="row">
                     <div class="input-field col s4">
-                        <label for="composer">Monster Name</label>
+                        <label for="name">Monster Name</label>
                         <input type="text" id="name" placeholder="Monster Foo"/>
                     </div>
                     <div class="input-field col s8">
-                        <label for="title">Description</label>
+                        <label for="description">Description</label>
                         <input type="text" id="description" placeholder="Medium aberration (metasyntatic variable), neutral evil"/>
                     </div>
 
                     <!-- Base Attributes -->
                     <div class="input-field col s4">
-                        <label for="title">Armor Class</label>
+                        <label for="ac">Armor Class</label>
                         <input type="text" id="ac" placeholder="15 (Leather Armor, Shield)"/>
                     </div>
                     <div class="input-field col s4">
-                        <label for="title">Hit Points</label>
+                        <label for="hp">Hit Points</label>
                         <input type="text" id="hp" placeholder="3d8 + 3"/>
                     </div>
                     <div class="input-field col s4">
-                        <label for="title">Speed</label>
+                        <label for="speed">Speed</label>
                         <input type="text" id="speed" placeholder="30 ft. fly 30 ft."/>
                     </div>
 
                     <!-- Base Stats -->
                     <div class="input-field col s2">
-                        <label for="title">Strength</label>
+                        <label for="str">Strength</label>
                         <input type="text" id="str" placeholder="12"/>
                     </div>
                     <div class="input-field col s2">
-                        <label for="title">Dexterity</label>
+                        <label for="dex">Dexterity</label>
                         <input type="text" id="dex" placeholder="8"/>
                     </div>
                     <div class="input-field col s2">
-                        <label for="title">Constitution</label>
+                        <label for="con">Constitution</label>
                         <input type="text" id="con" placeholder="13"/>
                     </div>
                     <div class="input-field col s2">
-                        <label for="title">Intelligence</label>
+                        <label for="int">Intelligence</label>
                         <input type="text" id="int" placeholder="10"/>
                     </div>
                     <div class="input-field col s2">
-                        <label for="title">Wisdom</label>
+                        <label for="wis">Wisdom</label>
                         <input type="text" id="wis" placeholder="14"/>
                     </div>
                     <div class="input-field col s2">
-                        <label for="title">Charisma</label>
+                        <label for="cha">Charisma</label>
                         <input type="text" id="cha" placeholder="15"/>
                     </div>
                 </div>
@@ -101,39 +105,39 @@
                 <span class="card-title">Details</span>
                 <div class="row">
                     <div class="input-field col s6">
-                        <label for="composer">Saving Throws</label>
+                        <label for="saving-throws">Saving Throws</label>
                         <input type="text" id="saving-throws" placeholder="STR +2, INT +4, CHA +1"/>
                     </div>
                     <div class="input-field col s6">
-                        <label for="title">Skills</label>
+                        <label for="skills">Skills</label>
                         <input type="text" id="skills" placeholder="Acrobatics +2, Arcana +4"/>
                     </div>
                     <div class="input-field col s6">
-                        <label for="title">Damage Vulnerabilities</label>
+                        <label for="damage-vulnerabilities">Damage Vulnerabilities</label>
                         <input type="text" id="damage-vulnerabilities" placeholder="cold, fire, psychic"/>
                     </div>
                     <div class="input-field col s6">
-                        <label for="title">Damage Resistances</label>
+                        <label for="damage-resistances">Damage Resistances</label>
                         <input type="text" id="damage-resistances" placeholder="bludgeoning, piercing and slashing from nonmagical attacks"/>
                     </div>
                     <div class="input-field col s6">
-                        <label for="title">Damage Immunities</label>
+                        <label for="damage-immunities">Damage Immunities</label>
                         <input type="text" id="damage-immunities" placeholder="poison"/>
                     </div>
                     <div class="input-field col s6">
-                        <label for="title">Condition Immunities</label>
+                        <label for="condition-immunities">Condition Immunities</label>
                         <input type="text" id="condition-immunities" placeholder="poisoned"/>
                     </div>
                     <div class="input-field col s6">
-                        <label for="title">Senses</label>
+                        <label for="senses">Senses</label>
                         <input type="text" id="senses" placeholder="darkvision 60 ft., passive Perception 10"/>
                     </div>
                     <div class="input-field col s6">
-                        <label for="title">Languages</label>
+                        <label for="languages">Languages</label>
                         <input type="text" id="languages" placeholder="Common, Goblin, Undercommon"/>
                     </div>
                     <div class="input-field col s1 offset-s5">
-                        <label for="title">Challenge</label>
+                        <label for="challenge">Challenge</label>
                         <input type="text" id="challenge" placeholder="1"/>
                     </div>
                 </div>
@@ -144,12 +148,14 @@
         <div class="col card">
             <div class="card-content">
                 <span class="card-title">Traits</span>
-                <div class="row" id="traits">
 
+                <div id="trait">
+                    
                 </div>
+
                 <div class="row">
-                    <a class="waves-effect waves-light btn col offset-s1"><i class="material-icons left">remove</i>Remove last</a>
-                    <a class="waves-effect waves-light btn col offset-s7"><i class="material-icons left">add</i>Add new</a>
+                    <a class="waves-effect waves-light btn col offset-s1 remove" id="remove-trait"><i class="material-icons left">remove</i>Remove last</a>
+                    <a class="waves-effect waves-light btn col offset-s7 add" id="add-trait"><i class="material-icons left">add</i>Add new</a>
                 </div>
             </div>
         </div>
@@ -161,18 +167,31 @@
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <label for="title">Innate Spellcasting Description</label>
+                        <label for="innate-desc">Innate Spellcasting Description</label>
                         <input type="text" id="innate-desc" placeholder="Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks."/>
                     </div>
                 </div>
 
-                <div class="row" id="innate">
+                <!-- TODO: Remove -->
+                <div id="innate-$" class="row">
+                    <div class="input-field col s1">
+                        <label class="active" for="innate-uses-$">Uses per Day</label>
+                        <input type="text" id="innate-uses-$" placeholder="3"/>
+                    </div>
+                    <div class="input-field col s11">
+                        <label class="active" for="innate-spells-$">Spell Names</label>
+                        <input type="text" id="innate-spells-$" placeholder="fog cloud, rope trick"/>
+                    </div>
+                </div>
+				<!-- TODO: Remove End -->
+
+                <div id="innate">
 
                 </div>
 
                 <div class="row">
-                    <a class="waves-effect waves-light btn col offset-s1"><i class="material-icons left">remove</i>Remove last</a>
-                    <a class="waves-effect waves-light btn col offset-s7"><i class="material-icons left">add</i>Add new</a>
+                    <a class="waves-effect waves-light btn col offset-s1 remove" id="remove-innate"><i class="material-icons left">remove</i>Remove last</a>
+                    <a class="waves-effect waves-light btn col offset-s7 add" id="add-innate"><i class="material-icons left">add</i>Add new</a>
                 </div>
             </div>
         </div>
@@ -184,16 +203,37 @@
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <label for="title">Spellcasting Description</label>
+                        <label for="spell-desc">Spellcasting Description</label>
                         <input type="text" id="spell-desc" placeholder="Foo is a 2nd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks)."/>
                     </div>
                 </div>
-                <div class="row" id="spells">
+
+                <!-- TODO: Remove -->
+                <div id="spell-$" class="row">
+                    <div class="input-field col s2">
+                        <select id="spell-select-$">
+                            <option value="0">Cantrip</option>
+                        </select>
+                        <label for="spell-level-$">Spell Level</label>
+                    </div>
+                    <div class="input-field col s1">
+                        <label class="active" for="spell-uses-$">Uses per Day</label>
+                        <input type="text" id="spell-uses-$" placeholder="3"/>
+                    </div>
+                    <div class="input-field col s9">
+                        <label class="active" for="spells-$">Spell Names</label>
+                        <input type="text" id="spells-$" placeholder="burning hands, mage armor, shield"/>
+                    </div>
+                </div>
+				<!-- TODO: Remove End -->
+
+                <div id="spell">
 
                 </div>
+
                 <div class="row">
-                    <a class="waves-effect waves-light btn col offset-s1"><i class="material-icons left">remove</i>Remove last</a>
-                    <a class="waves-effect waves-light btn col offset-s7"><i class="material-icons left">add</i>Add new</a>
+                    <a class="waves-effect waves-light btn col offset-s1 remove" id="remove-spell"><i class="material-icons left">remove</i>Remove last</a>
+                    <a class="waves-effect waves-light btn col offset-s7 add" id="add-spell"><i class="material-icons left">add</i>Add new</a>
                 </div>
             </div>
         </div>
@@ -202,12 +242,14 @@
         <div class="col card">
             <div class="card-content">
                 <span class="card-title">Actions</span>
-                <div class="row" id="actions">
+
+                <div id="action">
 
                 </div>
+
                 <div class="row">
-                    <a class="waves-effect waves-light btn col offset-s1"><i class="material-icons left">remove</i>Remove last</a>
-                    <a class="waves-effect waves-light btn col offset-s7"><i class="material-icons left">add</i>Add new</a>
+                    <a class="waves-effect waves-light btn col offset-s1 remove" id="remove-action"><i class="material-icons left">remove</i>Remove last</a>
+                    <a class="waves-effect waves-light btn col offset-s7 add" id="add-action"><i class="material-icons left">add</i>Add new</a>
                 </div>
             </div>
         </div>
@@ -219,16 +261,18 @@
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <label for="title">Legendary Action Description</label>
+                        <label for="legendary-action-desc">Legendary Action Description</label>
                         <input type="text" id="legendary-action-desc" placeholder="The foo can take 3 legendary actions, choosing from the options below."/>
                     </div>
                 </div>
-                <div class="row" id="legendary-actions">
+
+                <div id="legendary-action">
 
                 </div>
+
                 <div class="row">
-                    <a class="waves-effect waves-light btn col offset-s1"><i class="material-icons left">remove</i>Remove last</a>
-                    <a class="waves-effect waves-light btn col offset-s7"><i class="material-icons left">add</i>Add new</a>
+                    <a class="waves-effect waves-light btn col offset-s1 remove" id="remove-legendary"><i class="material-icons left">remove</i>Remove last</a>
+                    <a class="waves-effect waves-light btn col offset-s7 add" id="add-legendary"><i class="material-icons left">add</i>Add new</a>
                 </div>
             </div>
         </div>
@@ -237,12 +281,14 @@
         <div class="col card">
             <div class="card-content">
                 <span class="card-title">Attacks</span>
-                <div class="row" id="attacks">
+
+                <div id="attacks">
 
                 </div>
+
                 <div class="row">
-                    <a class="waves-effect waves-light btn col offset-s1"><i class="material-icons left">remove</i>Remove last</a>
-                    <a class="waves-effect waves-light btn col offset-s7"><i class="material-icons left">add</i>Add new</a>
+                    <a class="waves-effect waves-light btn col offset-s1 remove" id="remove-attack"><i class="material-icons left">remove</i>Remove last</a>
+                    <a class="waves-effect waves-light btn col offset-s7 add" id="add-attack"><i class="material-icons left">add</i>Add new</a>
                 </div>
             </div>
         </div>
