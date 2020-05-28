@@ -243,6 +243,19 @@
             <div class="card-content">
                 <span class="card-title">Actions</span>
 
+				<!-- TODO: Remove -->
+				<div id="action-$" class="row">
+					<div class="input-field col s2">
+						<label class="active" for="action-name-$">Name</label>
+						<input type="text" id="action-name-$" placeholder="Multiattack"/>
+					</div>
+					<div class="input-field col s10">
+						<label class="active" for="action-desc-$">Description</label>
+						<input type="text" id="action-desc-$" placeholder="Foo makes two melee attacks."/>
+					</div>
+				</div>
+				<!-- TODO: Remove End -->
+
                 <div id="action">
 
                 </div>
@@ -266,7 +279,20 @@
                     </div>
                 </div>
 
-                <div id="legendary-action">
+				<!-- TODO: Remove -->
+				<div id="legendary-$" class="row">
+					<div class="input-field col s2">
+						<label class="active" for="legendary-name-$">Name</label>
+						<input type="text" id="legendary-name-$" placeholder="Create Contract"/>
+					</div>
+					<div class="input-field col s10">
+						<label class="active" for="legendary-desc-$">Description</label>
+						<input type="text" id="legendary-desc-$" placeholder="Foo presents a contract and waves it in the face of a creature within 10 feet."/>
+					</div>
+				</div>
+				<!-- TODO: Remove End -->
+
+                <div id="legendary">
 
                 </div>
 
@@ -282,7 +308,7 @@
             <div class="card-content">
                 <span class="card-title">Attacks</span>
 
-                <div id="attacks">
+                <div id="attack">
 
                 </div>
 
@@ -299,7 +325,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!-- Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+	<!-- Scripts -->
     <script src="ui2.js"></script>
 </body>
 </html>

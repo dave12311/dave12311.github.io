@@ -10,6 +10,14 @@ var dynamicElements = {
 	spell: {
 		count: 0,
 		html: '<div id="spell-$" class="row"><div class="input-field col s2"><select id="spell-select-$"><option value="0">Cantrip</option></select><label for="spell-level-$">Spell Level</label></div><div class="input-field col s1"><label class="active" for="spell-uses-$">Uses per Day</label><input disabled type="text" id="spell-uses-$" placeholder="3"/></div><div class="input-field col s9"><label class="active" for="spells-$">Spell Names</label><input type="text" id="spells-$" placeholder="burning hands, mage armor, shield"/></div></div>'
+	},
+	action: {
+		count: 0,
+		html: '<div id="action-$" class="row"><div class="input-field col s2"><label class="active" for="action-name-$">Name</label><input type="text" id="action-name-$" placeholder="Multiattack"/></div><div class="input-field col s10"><label class="active" for="action-desc-$">Description</label><input type="text" id="action-desc-$" placeholder="Foo makes two melee attacks"/></div></div>'
+	},
+	'legendary': {
+		count: 0,
+		html: '<div id="legendary-$" class="row"><div class="input-field col s2"><label class="active" for="legendary-name-$">Name</label><input type="text" id="legendary-name-$" placeholder="Create Contract"/></div><div class="input-field col s10"><label class="active" for="legendary-desc-$">Description</label><input type="text" id="legendary-desc-$" placeholder="Foo presents a contract and waves it in the face of a creature within 10 feet."/></div></div>'
 	}
 }
 
@@ -20,7 +28,6 @@ $(document).ready(function() {
 
 	// ADD NEW
 	$('.add').click((data) => {
-		console.log(data);
 		try {
 			// Get destination div to generate new fields in
 			var dest = data.currentTarget.id.substring(4, data.currentTarget.id.size);
