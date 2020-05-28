@@ -9,7 +9,7 @@ var dynamicElements = {
 	},
 	spell: {
 		count: 0,
-		html: '<div id="spell-$" class="row"><div class="input-field col s2"><select id="spell-select-$"><option value="0">Cantrip</option></select><label for="spell-level-$">Spell Level</label></div><div class="input-field col s1"><label class="active" for="spell-uses-$">Uses per Day</label><input type="text" id="spell-uses-$" placeholder="3"/></div><div class="input-field col s9"><label class="active" for="spells-$">Spell Names</label><input type="text" id="spells-$" placeholder="burning hands, mage armor, shield"/></div></div>'
+		html: '<div id="spell-$" class="row"><div class="input-field col s2"><select id="spell-select-$"><option value="0">Cantrip</option></select><label for="spell-level-$">Spell Level</label></div><div class="input-field col s1"><label class="active" for="spell-uses-$">Uses per Day</label><input disabled type="text" id="spell-uses-$" placeholder="3"/></div><div class="input-field col s9"><label class="active" for="spells-$">Spell Names</label><input type="text" id="spells-$" placeholder="burning hands, mage armor, shield"/></div></div>'
 	}
 }
 
@@ -18,11 +18,12 @@ $(document).ready(function() {
 	$('.tooltipped').tooltip();
 	$('select').formSelect();
 
-	// Button click listeners
+	// ADD NEW
 	$('.add').click((data) => {
+		console.log(data);
 		try {
 			// Get destination div to generate new fields in
-			var dest = data.target.id.substring(4, data.target.id.size);
+			var dest = data.currentTarget.id.substring(4, data.currentTarget.id.size);
 
 			// Replace '$' in html text to id, increase count
 			$('#' + dest).append(dynamicElements[dest].html.replace(/[$]/g, dynamicElements[dest].count));
@@ -34,16 +35,28 @@ $(document).ready(function() {
 				for (var i = 1; i < 10; i++) {
 					$(select).append($(new Option(i + '. Level', i)));
 				}
+
 				$(select).formSelect();
+
+				// Add event handler to select to enable/disable 'Uses per Day' field
+				$(select).change((eventData) => {
+					var uses = '#spell-uses-' + eventData.currentTarget.id.substring(13, eventData.currentTarget.id.size);
+					if (eventData.currentTarget.selectedIndex > 0) {
+						$(uses).prop("disabled", false);
+					} else {
+						$(uses).prop("disabled", true);
+					}
+				});
 			}
 		} catch (e) {
 			console.log(e);
 		}
 	});
 
+	// REMOVE LAST
 	$('.remove').click((data) => {
 		// Get destination div to generate new fields in
-		var dest = data.target.id.substring(7, data.target.id.size);
+		var dest = data.currentTarget.id.substring(7, data.currentTarget.id.size);
 
 		// Remove elements if necessary
 		if (dynamicElements[dest].count > 0) {
