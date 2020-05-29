@@ -1,331 +1,458 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D&D 5E LaTeX Monster Creator</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <style>
-        ::placeholder {
-            color:    #555555;
-        }
-        .input-field label {
-            color: #444444;
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>D&D 5E LaTeX Monster Creator</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<style>
+		::placeholder {
+			color: #555555;
+		}
+
+		.input-field label {
+			color: #444444;
+		}
+	</style>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
 <body class="grey darken-3">
 
-    <!-- Navbar -->
-    <nav>
-        <div class="nav-wrapper grey">
-          <a href="#!" class="brand-logo center">D&D 5E LaTeX Monster Creator</a>
-        </div>
-    </nav>
+	<!-- Navbar -->
+	<nav>
+		<div class="nav-wrapper grey">
+			<a href="#!" class="brand-logo center">D&D 5E LaTeX Monster Creator</a>
+		</div>
+	</nav>
 
-    <!-- Progress bar -->
-    <div class="progress" id="progress">
-        <div class="indeterminate"></div>
-    </div>
+	<!-- Progress bar -->
+	<div class="progress" id="progress">
+		<div class="indeterminate"></div>
+	</div>
 
-    <!-- Floating Button -->
-    <div class="fixed-action-btn">
-        <a class="btn-floating btn-large green" id="generate">
-        <i class="large material-icons">check</i>
-        </a>
-        <ul>
-            <li><a class="btn-floating blue" id="top"><i class="material-icons">arrow_upward</i></a></li>
-            <li><a class="btn-floating yellow darken-4" id="download"><i class="material-icons">file_download</i></a></li>
-            <li><a class="btn-floating red" id="clear"><i class="material-icons">clear</i></a></li>
-            </ul>
-    </div>
+	<!-- Floating Button -->
+	<div class="fixed-action-btn">
+		<a class="btn-floating btn-large green" id="generate">
+			<i class="large material-icons">check</i>
+		</a>
+		<ul>
+			<li><a class="btn-floating blue" id="top"><i class="material-icons">arrow_upward</i></a></li>
+			<li><a class="btn-floating yellow darken-4" id="download"><i class="material-icons">file_download</i></a>
+			</li>
+			<li><a class="btn-floating red" id="clear"><i class="material-icons">clear</i></a></li>
+		</ul>
+	</div>
 
-    <!-- Cards -->
-    <div class="container">
-        <!-- Base Stats and Attributes -->
-        <div class="col card">
-            <div class="card-content">
-                <span class="card-title">Base Stats and Attributes</span>
-                <div class="row">
-                    <div class="input-field col s4">
-                        <label for="name">Monster Name</label>
-                        <input type="text" id="name" placeholder="Monster Foo"/>
-                    </div>
-                    <div class="input-field col s8">
-                        <label for="description">Description</label>
-                        <input type="text" id="description" placeholder="Medium aberration (metasyntatic variable), neutral evil"/>
-                    </div>
+	<!-- Cards -->
+	<div class="container">
+		<!-- Base Stats and Attributes -->
+		<div class="col card">
+			<div class="card-content">
+				<span class="card-title">Base Stats and Attributes</span>
+				<div class="row">
+					<div class="input-field col s4">
+						<label for="name">Monster Name</label>
+						<input type="text" id="name" placeholder="Monster Foo" />
+					</div>
+					<div class="input-field col s8">
+						<label for="description">Description</label>
+						<input type="text" id="description"
+							placeholder="Medium aberration (metasyntatic variable), neutral evil" />
+					</div>
 
-                    <!-- Base Attributes -->
-                    <div class="input-field col s4">
-                        <label for="ac">Armor Class</label>
-                        <input type="text" id="ac" placeholder="15 (Leather Armor, Shield)"/>
-                    </div>
-                    <div class="input-field col s4">
-                        <label for="hp">Hit Points</label>
-                        <input type="text" id="hp" placeholder="3d8 + 3"/>
-                    </div>
-                    <div class="input-field col s4">
-                        <label for="speed">Speed</label>
-                        <input type="text" id="speed" placeholder="30 ft. fly 30 ft."/>
-                    </div>
+					<!-- Base Attributes -->
+					<div class="input-field col s4">
+						<label for="ac">Armor Class</label>
+						<input type="text" id="ac" placeholder="15 (Leather Armor, Shield)" />
+					</div>
+					<div class="input-field col s4">
+						<label for="hp">Hit Points</label>
+						<input type="text" id="hp" placeholder="3d8 + 3" />
+					</div>
+					<div class="input-field col s4">
+						<label for="speed">Speed</label>
+						<input type="text" id="speed" placeholder="30 ft. fly 30 ft." />
+					</div>
 
-                    <!-- Base Stats -->
-                    <div class="input-field col s2">
-                        <label for="str">Strength</label>
-                        <input type="text" id="str" placeholder="12"/>
-                    </div>
-                    <div class="input-field col s2">
-                        <label for="dex">Dexterity</label>
-                        <input type="text" id="dex" placeholder="8"/>
-                    </div>
-                    <div class="input-field col s2">
-                        <label for="con">Constitution</label>
-                        <input type="text" id="con" placeholder="13"/>
-                    </div>
-                    <div class="input-field col s2">
-                        <label for="int">Intelligence</label>
-                        <input type="text" id="int" placeholder="10"/>
-                    </div>
-                    <div class="input-field col s2">
-                        <label for="wis">Wisdom</label>
-                        <input type="text" id="wis" placeholder="14"/>
-                    </div>
-                    <div class="input-field col s2">
-                        <label for="cha">Charisma</label>
-                        <input type="text" id="cha" placeholder="15"/>
-                    </div>
-                </div>
-            </div>
-        </div>
+					<!-- Base Stats -->
+					<div class="input-field col s2">
+						<label for="str">Strength</label>
+						<input type="text" id="str" placeholder="12" />
+					</div>
+					<div class="input-field col s2">
+						<label for="dex">Dexterity</label>
+						<input type="text" id="dex" placeholder="8" />
+					</div>
+					<div class="input-field col s2">
+						<label for="con">Constitution</label>
+						<input type="text" id="con" placeholder="13" />
+					</div>
+					<div class="input-field col s2">
+						<label for="int">Intelligence</label>
+						<input type="text" id="int" placeholder="10" />
+					</div>
+					<div class="input-field col s2">
+						<label for="wis">Wisdom</label>
+						<input type="text" id="wis" placeholder="14" />
+					</div>
+					<div class="input-field col s2">
+						<label for="cha">Charisma</label>
+						<input type="text" id="cha" placeholder="15" />
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <!-- Details -->
-        <div class="col card">
-            <div class="card-content">
-                <span class="card-title">Details</span>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <label for="saving-throws">Saving Throws</label>
-                        <input type="text" id="saving-throws" placeholder="STR +2, INT +4, CHA +1"/>
-                    </div>
-                    <div class="input-field col s6">
-                        <label for="skills">Skills</label>
-                        <input type="text" id="skills" placeholder="Acrobatics +2, Arcana +4"/>
-                    </div>
-                    <div class="input-field col s6">
-                        <label for="damage-vulnerabilities">Damage Vulnerabilities</label>
-                        <input type="text" id="damage-vulnerabilities" placeholder="cold, fire, psychic"/>
-                    </div>
-                    <div class="input-field col s6">
-                        <label for="damage-resistances">Damage Resistances</label>
-                        <input type="text" id="damage-resistances" placeholder="bludgeoning, piercing and slashing from nonmagical attacks"/>
-                    </div>
-                    <div class="input-field col s6">
-                        <label for="damage-immunities">Damage Immunities</label>
-                        <input type="text" id="damage-immunities" placeholder="poison"/>
-                    </div>
-                    <div class="input-field col s6">
-                        <label for="condition-immunities">Condition Immunities</label>
-                        <input type="text" id="condition-immunities" placeholder="poisoned"/>
-                    </div>
-                    <div class="input-field col s6">
-                        <label for="senses">Senses</label>
-                        <input type="text" id="senses" placeholder="darkvision 60 ft., passive Perception 10"/>
-                    </div>
-                    <div class="input-field col s6">
-                        <label for="languages">Languages</label>
-                        <input type="text" id="languages" placeholder="Common, Goblin, Undercommon"/>
-                    </div>
-                    <div class="input-field col s1 offset-s5">
-                        <label for="challenge">Challenge</label>
-                        <input type="text" id="challenge" placeholder="1"/>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<!-- Details -->
+		<div class="col card">
+			<div class="card-content">
+				<span class="card-title">Details</span>
+				<div class="row">
+					<div class="input-field col s6">
+						<label for="saving-throws">Saving Throws</label>
+						<input type="text" id="saving-throws" placeholder="STR +2, INT +4, CHA +1" />
+					</div>
+					<div class="input-field col s6">
+						<label for="skills">Skills</label>
+						<input type="text" id="skills" placeholder="Acrobatics +2, Arcana +4" />
+					</div>
+					<div class="input-field col s6">
+						<label for="damage-vulnerabilities">Damage Vulnerabilities</label>
+						<input type="text" id="damage-vulnerabilities" placeholder="cold, fire, psychic" />
+					</div>
+					<div class="input-field col s6">
+						<label for="damage-resistances">Damage Resistances</label>
+						<input type="text" id="damage-resistances"
+							placeholder="bludgeoning, piercing and slashing from nonmagical attacks" />
+					</div>
+					<div class="input-field col s6">
+						<label for="damage-immunities">Damage Immunities</label>
+						<input type="text" id="damage-immunities" placeholder="poison" />
+					</div>
+					<div class="input-field col s6">
+						<label for="condition-immunities">Condition Immunities</label>
+						<input type="text" id="condition-immunities" placeholder="poisoned" />
+					</div>
+					<div class="input-field col s6">
+						<label for="senses">Senses</label>
+						<input type="text" id="senses" placeholder="darkvision 60 ft., passive Perception 10" />
+					</div>
+					<div class="input-field col s6">
+						<label for="languages">Languages</label>
+						<input type="text" id="languages" placeholder="Common, Goblin, Undercommon" />
+					</div>
+					<div class="input-field col s1 offset-s5">
+						<label for="challenge">Challenge</label>
+						<input type="text" id="challenge" placeholder="1" />
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <!-- Traits -->
-        <div class="col card">
-            <div class="card-content">
-                <span class="card-title">Traits</span>
+		<!-- Traits -->
+		<div class="col card">
+			<div class="card-content">
+				<span class="card-title">Traits</span>
 
-                <div id="trait">
-                    
-                </div>
+				<div id="trait">
 
-                <div class="row">
-                    <a class="waves-effect waves-light btn col offset-s1 remove" id="remove-trait"><i class="material-icons left">remove</i>Remove last</a>
-                    <a class="waves-effect waves-light btn col offset-s7 add" id="add-trait"><i class="material-icons left">add</i>Add new</a>
-                </div>
-            </div>
-        </div>
+				</div>
 
-        <!-- Innate Spellcasting -->
-        <div class="col card">
-            <div class="card-content">
-                <span class="card-title">Innate Spellcasting</span>
+				<div class="row">
+					<a class="waves-effect waves-light btn col offset-s1 remove" id="remove-trait"><i
+							class="material-icons left">remove</i>Remove last</a>
+					<a class="waves-effect waves-light btn col offset-s7 add" id="add-trait"><i
+							class="material-icons left">add</i>Add new</a>
+				</div>
+			</div>
+		</div>
 
-                <div class="row">
-                    <div class="input-field col s12">
-                        <label for="innate-desc">Innate Spellcasting Description</label>
-                        <input type="text" id="innate-desc" placeholder="Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks."/>
-                    </div>
-                </div>
+		<!-- Innate Spellcasting -->
+		<div class="col card">
+			<div class="card-content">
+				<span class="card-title">Innate Spellcasting</span>
 
-                <!-- TODO: Remove -->
-                <div id="innate-$" class="row">
-                    <div class="input-field col s1">
-                        <label class="active" for="innate-uses-$">Uses per Day</label>
-                        <input type="text" id="innate-uses-$" placeholder="3"/>
-                    </div>
-                    <div class="input-field col s11">
-                        <label class="active" for="innate-spells-$">Spell Names</label>
-                        <input type="text" id="innate-spells-$" placeholder="fog cloud, rope trick"/>
-                    </div>
-                </div>
+				<div class="row">
+					<div class="input-field col s12">
+						<label for="innate-desc">Innate Spellcasting Description</label>
+						<input type="text" id="innate-desc"
+							placeholder="Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks." />
+					</div>
+				</div>
+
+				<!-- TODO: Remove -->
+				<div id="innate-$" class="row">
+					<div class="input-field col s1">
+						<label class="active" for="innate-uses-$">Uses per Day</label>
+						<input type="text" id="innate-uses-$" placeholder="3" />
+					</div>
+					<div class="input-field col s11">
+						<label class="active" for="innate-spells-$">Spell Names</label>
+						<input type="text" id="innate-spells-$" placeholder="fog cloud, rope trick" />
+					</div>
+				</div>
 				<!-- TODO: Remove End -->
 
-                <div id="innate">
+				<div id="innate">
 
-                </div>
+				</div>
 
-                <div class="row">
-                    <a class="waves-effect waves-light btn col offset-s1 remove" id="remove-innate"><i class="material-icons left">remove</i>Remove last</a>
-                    <a class="waves-effect waves-light btn col offset-s7 add" id="add-innate"><i class="material-icons left">add</i>Add new</a>
-                </div>
-            </div>
-        </div>
+				<div class="row">
+					<a class="waves-effect waves-light btn col offset-s1 remove" id="remove-innate"><i
+							class="material-icons left">remove</i>Remove last</a>
+					<a class="waves-effect waves-light btn col offset-s7 add" id="add-innate"><i
+							class="material-icons left">add</i>Add new</a>
+				</div>
+			</div>
+		</div>
 
-        <!-- Spellcasting -->
-        <div class="col card">
-            <div class="card-content">
-                <span class="card-title">Spellcasting</span>
+		<!-- Spellcasting -->
+		<div class="col card">
+			<div class="card-content">
+				<span class="card-title">Spellcasting</span>
 
-                <div class="row">
-                    <div class="input-field col s12">
-                        <label for="spell-desc">Spellcasting Description</label>
-                        <input type="text" id="spell-desc" placeholder="Foo is a 2nd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks)."/>
-                    </div>
-                </div>
+				<div class="row">
+					<div class="input-field col s12">
+						<label for="spell-desc">Spellcasting Description</label>
+						<input type="text" id="spell-desc"
+							placeholder="Foo is a 2nd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks)." />
+					</div>
+				</div>
 
-                <!-- TODO: Remove -->
-                <div id="spell-$" class="row">
-                    <div class="input-field col s2">
-                        <select id="spell-select-$">
-                            <option value="0">Cantrip</option>
-                        </select>
-                        <label for="spell-level-$">Spell Level</label>
-                    </div>
-                    <div class="input-field col s1">
-                        <label class="active" for="spell-uses-$">Uses per Day</label>
-                        <input disabled type="text" id="spell-uses-$" placeholder="3"/>
-                    </div>
-                    <div class="input-field col s9">
-                        <label class="active" for="spells-$">Spell Names</label>
-                        <input type="text" id="spells-$" placeholder="burning hands, mage armor, shield"/>
-                    </div>
-                </div>
+				<!-- TODO: Remove -->
+				<div id="spell-$" class="row">
+					<div class="input-field col s2">
+						<select id="spell-select-$">
+							<option value="0">Cantrip</option>
+						</select>
+						<label for="spell-level-$">Spell Level</label>
+					</div>
+					<div class="input-field col s1">
+						<label class="active" for="spell-uses-$">Uses per Day</label>
+						<input disabled type="text" id="spell-uses-$" placeholder="3" />
+					</div>
+					<div class="input-field col s9">
+						<label class="active" for="spells-$">Spell Names</label>
+						<input type="text" id="spells-$" placeholder="burning hands, mage armor, shield" />
+					</div>
+				</div>
 				<!-- TODO: Remove End -->
 
-                <div id="spell">
+				<div id="spell">
 
-                </div>
+				</div>
 
-                <div class="row">
-                    <a class="waves-effect waves-light btn col offset-s1 remove" id="remove-spell"><i class="material-icons left">remove</i>Remove last</a>
-                    <a class="waves-effect waves-light btn col offset-s7 add" id="add-spell"><i class="material-icons left">add</i>Add new</a>
-                </div>
-            </div>
-        </div>
+				<div class="row">
+					<a class="waves-effect waves-light btn col offset-s1 remove" id="remove-spell"><i
+							class="material-icons left">remove</i>Remove last</a>
+					<a class="waves-effect waves-light btn col offset-s7 add" id="add-spell"><i
+							class="material-icons left">add</i>Add new</a>
+				</div>
+			</div>
+		</div>
 
-        <!-- Actions -->
-        <div class="col card">
-            <div class="card-content">
-                <span class="card-title">Actions</span>
+		<!-- Actions -->
+		<div class="col card">
+			<div class="card-content">
+				<span class="card-title">Actions</span>
 
 				<!-- TODO: Remove -->
 				<div id="action-$" class="row">
 					<div class="input-field col s2">
 						<label class="active" for="action-name-$">Name</label>
-						<input type="text" id="action-name-$" placeholder="Multiattack"/>
+						<input type="text" id="action-name-$" placeholder="Multiattack" />
 					</div>
 					<div class="input-field col s10">
 						<label class="active" for="action-desc-$">Description</label>
-						<input type="text" id="action-desc-$" placeholder="Foo makes two melee attacks."/>
+						<input type="text" id="action-desc-$" placeholder="Foo makes two melee attacks." />
 					</div>
 				</div>
 				<!-- TODO: Remove End -->
 
-                <div id="action">
+				<div id="action">
 
-                </div>
+				</div>
 
-                <div class="row">
-                    <a class="waves-effect waves-light btn col offset-s1 remove" id="remove-action"><i class="material-icons left">remove</i>Remove last</a>
-                    <a class="waves-effect waves-light btn col offset-s7 add" id="add-action"><i class="material-icons left">add</i>Add new</a>
-                </div>
-            </div>
-        </div>
+				<div class="row">
+					<a class="waves-effect waves-light btn col offset-s1 remove" id="remove-action"><i
+							class="material-icons left">remove</i>Remove last</a>
+					<a class="waves-effect waves-light btn col offset-s7 add" id="add-action"><i
+							class="material-icons left">add</i>Add new</a>
+				</div>
+			</div>
+		</div>
 
-        <!-- Legendary Actions -->
-        <div class="col card">
-            <div class="card-content">
-                <span class="card-title">Legendary Actions</span>
+		<!-- Legendary Actions -->
+		<div class="col card">
+			<div class="card-content">
+				<span class="card-title">Legendary Actions</span>
 
-                <div class="row">
-                    <div class="input-field col s12">
-                        <label for="legendary-action-desc">Legendary Action Description</label>
-                        <input type="text" id="legendary-action-desc" placeholder="The foo can take 3 legendary actions, choosing from the options below."/>
-                    </div>
-                </div>
+				<div class="row">
+					<div class="input-field col s12">
+						<label for="legendary-action-desc">Legendary Action Description</label>
+						<input type="text" id="legendary-action-desc"
+							placeholder="The foo can take 3 legendary actions, choosing from the options below." />
+					</div>
+				</div>
 
 				<!-- TODO: Remove -->
 				<div id="legendary-$" class="row">
 					<div class="input-field col s2">
 						<label class="active" for="legendary-name-$">Name</label>
-						<input type="text" id="legendary-name-$" placeholder="Create Contract"/>
+						<input type="text" id="legendary-name-$" placeholder="Create Contract" />
 					</div>
 					<div class="input-field col s10">
 						<label class="active" for="legendary-desc-$">Description</label>
-						<input type="text" id="legendary-desc-$" placeholder="Foo presents a contract and waves it in the face of a creature within 10 feet."/>
+						<input type="text" id="legendary-desc-$"
+							placeholder="Foo presents a contract and waves it in the face of a creature within 10 feet." />
 					</div>
 				</div>
 				<!-- TODO: Remove End -->
 
-                <div id="legendary">
+				<div id="legendary">
 
-                </div>
+				</div>
 
-                <div class="row">
-                    <a class="waves-effect waves-light btn col offset-s1 remove" id="remove-legendary"><i class="material-icons left">remove</i>Remove last</a>
-                    <a class="waves-effect waves-light btn col offset-s7 add" id="add-legendary"><i class="material-icons left">add</i>Add new</a>
-                </div>
-            </div>
-        </div>
+				<div class="row">
+					<a class="waves-effect waves-light btn col offset-s1 remove" id="remove-legendary"><i
+							class="material-icons left">remove</i>Remove last</a>
+					<a class="waves-effect waves-light btn col offset-s7 add" id="add-legendary"><i
+							class="material-icons left">add</i>Add new</a>
+				</div>
+			</div>
+		</div>
 
-        <!-- Attacks -->
-        <div class="col card">
-            <div class="card-content">
-                <span class="card-title">Attacks</span>
+		<!-- Attacks -->
+		<div class="col card">
+			<div class="card-content">
+				<span class="card-title">Attacks</span>
 
-                <div id="attack">
+				<!-- TODO: Remove -->
+				<div id="attack-$" class="col card">
+					<div class="card-content">
+						<div class="row">
+							<div class="input-field col s3">
+								<label class="active" for="attack-name-$">Name</label>
+								<input type="text" id="attack-name-$" placeholder="Flame Tongue Longsword"/>
+							</div>
+							<div class="input-field col s2">
+								<select id="attack-distance-$">
+									<option value="0">Melee</option>
+									<option value="1">Ranged</option>
+									<option value="2">Both</option>
+								</select>
+								<label for="attack-distance-$">Distance</label>
+							</div>
+							<div class="input-field col s2">
+								<select id="attack-type-$">
+									<option value="0">Weapon</option>
+									<option value="1">Spell</option>
+								</select>
+								<label for="attack-type-$">Type</label>
+							</div>
+							<div class="input-field col s1">
+								<label class="active" for="attack-modifier-$">Modifier</label>
+								<input type="text" id="attack-modifier-$" placeholder="+3"/>
+							</div>
+							<div class="input-field col s1">
+								<label class="active" for="attack-reach-$">Reach</label>
+								<input type="text" id="attack-reach-$" placeholder="5"/>
+							</div>
+							<div class="input-field col s1">
+								<label class="active" for="attack-range-$">Range</label>
+								<input disabled type="text" id="attack-range-$" placeholder="60/120"/>
+							</div>
+							<div class="input-field col s2">
+								<label class="active" for="attack-target-$">Target</label>
+								<input type="text" id="attack-target-$" placeholder="one target"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s2 push-s1">
+								<label class="active" for="attack-damage-$">Damage</label>
+								<input type="text" id="attack-damage-$" placeholder="1d8+4"/>
+							</div>
+							<div class="input-field col s2 push-s1">
+								<select id="attack-damage-type-$">
+									<option value="0">Acid</option>
+									<option value="1">Bludgeoning</option>
+									<option value="2">Cold</option>
+									<option value="3">Fire</option>
+									<option value="4">Force</option>
+									<option value="5">Lightning</option>
+									<option value="6">Necrotic</option>
+									<option value="7">Piercing</option>
+									<option value="8">Poison</option>
+									<option value="9">Psychic</option>
+									<option value="10">Radiant</option>
+									<option value="11">Slashing</option>
+									<option value="12">Thunder</option>
+								</select>
+								<label for="attack-damage-type-$">Damage Type</label>
+							</div>
+							<div class="input-field col s2 push-s1">
+								<label class="active" for="attack-plus-damage-$">Plus Damage</label>
+								<input type="text" id="attack-plus-damage-$" placeholder="1d8+4"/>
+							</div>
+							<div class="input-field col s2 push-s1">
+								<select id="attack-plus-damage-type-$">
+									<option value="0">Acid</option>
+									<option value="1">Bludgeoning</option>
+									<option value="2">Cold</option>
+									<option value="3">Fire</option>
+									<option value="4">Force</option>
+									<option value="5">Lightning</option>
+									<option value="6">Necrotic</option>
+									<option value="7">Piercing</option>
+									<option value="8">Poison</option>
+									<option value="9">Psychic</option>
+									<option value="10">Radiant</option>
+									<option value="11">Slashing</option>
+									<option value="12">Thunder</option>
+								</select>
+								<label for="attack-plus-damage-type-$">Plus Damage Type</label>
+							</div>
+							<div class="input-field col s2 push-s1">
+								<label class="active" for="attack-or-damage-$">Or Damage</label>
+								<input type="text" id="attack-or-damage-$" placeholder="1d10+4"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s5">
+								<label class="active" for="attack-or-damage-when-$">Or Damage When</label>
+								<input type="text" id="attack-or-damage-when-$" placeholder="if used with two hands"/>
+							</div>
+							<div class="input-field col s7">
+								<label class="active" for="attack-extra-$">Extra</label>
+								<input type="text" id="attack-extra-$" placeholder=", and the target must make a DC 15 Con. saving throw"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- TODO: Remove End -->
 
-                </div>
+				<div id="attack">
 
-                <div class="row">
-                    <a class="waves-effect waves-light btn col offset-s1 remove" id="remove-attack"><i class="material-icons left">remove</i>Remove last</a>
-                    <a class="waves-effect waves-light btn col offset-s7 add" id="add-attack"><i class="material-icons left">add</i>Add new</a>
-                </div>
-            </div>
-        </div>
-    </div>
+				</div>
 
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <!-- Materialize -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+				<div class="row">
+					<a class="waves-effect waves-light btn col offset-s1 remove" id="remove-attack"><i
+							class="material-icons left">remove</i>Remove last</a>
+					<a class="waves-effect waves-light btn col offset-s7 add" id="add-attack"><i
+							class="material-icons left">add</i>Add new</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- JQuery -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<!-- Materialize -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<!-- Scripts -->
-    <script src="ui2.js"></script>
+	<script src="ui2.js"></script>
 </body>
+
 </html>
